@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoursesModule } from './modules/courses/courses.module';
-import { SharedModule } from './modules/shared/shared.module';
+import { CoursesModule } from './courses/courses.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [

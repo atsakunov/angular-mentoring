@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoursesPageComponent } from './courses-page.component';
-import { SearchComponent } from './search/search.component';
-import { CoursesListComponent } from './courses-list/courses-list.component';
 import { CoursesItemComponent } from './courses-item/courses-item.component';
+import { CoursesListComponent } from './courses-list/courses-list.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
