@@ -1,0 +1,13 @@
+.container {
+  background: #fff;
+  color: #0B1F35;
+  padding: 10px 0;
+  .inner-container {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    min-height: 25px;
+    align-items: center;
+    margin: 0 auto;
+  }
+}

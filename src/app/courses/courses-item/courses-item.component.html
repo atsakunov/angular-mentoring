@@ -1,1 +1,14 @@
-<p>courses-item works!</p>
+<mat-card>
+  <mat-card-title>{{course.title}}</mat-card-title>
+  <mat-card-subtitle>{{course.creationDate}}</mat-card-subtitle>
+  <mat-card-subtitle>{{course.duration}}</mat-card-subtitle>
+  <mat-card-content>
+    <p>
+      {{course.description}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button (click)="onEdit()">Edit</button>
+    <button mat-button color="warn" (click)="onDelete()">Delete</button>
+  </mat-card-actions>
+</mat-card>

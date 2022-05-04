@@ -1,0 +1,24 @@
+.container {
+  color: #0B1F35;
+  padding: 10px 0;
+  .search-field-container {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-gap: 12px;
+    align-items: center;
+  }
+  .inner-container {
+    min-height: 25px;
+    align-items: center;
+  }
+  .add-course {
+    display: flex;
+    justify-content: flex-end;
+    &-button {
+      display: grid;
+      grid-template-columns: max-content max-content;
+      grid-gap: 3px;
+      align-items: center;
+    }
+  }
+}

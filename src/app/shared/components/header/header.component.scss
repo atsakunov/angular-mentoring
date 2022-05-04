@@ -1,0 +1,11 @@
+.container {
+  background: rgb(48, 50, 64);
+  .inner-container {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    min-height: 50px;
+    align-items: center;
+    margin: 0 auto;
+  }
+}
