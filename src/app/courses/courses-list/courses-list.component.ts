@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component, EventEmitter, Input, Output
+} from '@angular/core';
 import { ICourse } from 'src/app/core/interfaces/course.interface';
 
 @Component({
