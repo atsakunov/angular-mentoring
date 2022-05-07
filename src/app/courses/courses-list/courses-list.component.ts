@@ -28,4 +28,8 @@ export class CoursesListComponent {
   public loadMore(): void {
     this.loadMoreHandler.emit();
   }
+
+  public trackByFn(_: number, item: ICourse): number {
+    return item.id;
+  }
 }

@@ -1,6 +1,6 @@
 <div class="container">
   <app-courses-item
-    *ngFor="let course of courses"
+    *ngFor="let course of courses; trackBy: trackByFn"
     [course]="course"
     (deleteHandler)="onDelete($event)"
     (editHandler)="onEdit($event)"
