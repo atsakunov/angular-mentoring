@@ -1,3 +1,30 @@
-<input type="text" />
-<input type="button" value="Search">
-<input type="button" value="Add course">
+<div class="container">
+  <div class="inner-container">
+    <div class="search-field-container">
+      <mat-form-field class="search-field" appearance="standard">
+        <span matPrefix><mat-icon>search</mat-icon> </span>
+        <input
+          matInput
+          placeholder="Search"
+          name= "search"
+          [(ngModel)]="search"
+        />
+      </mat-form-field>
+      <button
+        mat-raised-button color="primary"
+        (click)="onSearchChange()"
+      >
+        Search
+      </button>
+    </div>
+    <div class="add-course">
+      <button mat-stroked-button>
+        <div class="add-course-button">
+          <mat-icon>add</mat-icon>
+          <span>Add course</span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+

@@ -23,9 +23,12 @@
         "import/extensions": 0,
         "comma-dangle": 0,
         "@typescript-eslint/class-name-casing": 0,
+        "import/no-unresolved": 0,
+        "max-len": ["error", { "code": 120, "tabWidth": 4, "ignoreStrings": true }],
         "arrow-parens": 0,
         "@typescript-eslint/no-useless-constructor": 0,
         "no-empty-function": 0,
+        "no-console": 0,
         "@angular-eslint/directive-selector": [
           "error",
           {

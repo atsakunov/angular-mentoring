@@ -1,0 +1,12 @@
+.container {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-gap: 18px;
+  align-items: center;
+  .login-item {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-gap: 3px;
+    align-items: center;
+  }
+}

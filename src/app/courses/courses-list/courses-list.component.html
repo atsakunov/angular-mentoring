@@ -1,4 +1,12 @@
-<app-courses-item></app-courses-item>
-<app-courses-item></app-courses-item>
-<app-courses-item></app-courses-item>
-<app-courses-item></app-courses-item>
+<div class="container">
+  <app-courses-item
+    *ngFor="let course of courses; trackBy: trackByFn"
+    [course]="course"
+    (deleteHandler)="onDelete($event)"
+    (editHandler)="onEdit($event)"
+  ></app-courses-item>
+  <button mat-flat-button color="basic" (click)="loadMore()">
+    Load more
+  </button>
+</div>
+

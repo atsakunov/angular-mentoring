@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/header/logo/logo.component';
@@ -17,10 +19,12 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
   exports: [
     HeaderComponent,
     FooterComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    MatButtonModule
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule
   ]
 })
 export class SharedModule { }

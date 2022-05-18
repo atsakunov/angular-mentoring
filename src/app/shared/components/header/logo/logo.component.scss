@@ -1,0 +1,16 @@
+.container {
+  color: #fff;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-gap: 9px;
+  align-items: center;
+  .logo {
+    width: 50px;
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+  }
+}
