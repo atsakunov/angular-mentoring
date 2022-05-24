@@ -32,7 +32,7 @@ describe('CoursesPageComponent', () => {
   });
 
   it('should emit2 chatMessageFeedback$ true when clicked on like button', fakeAsync(() => {
-    const search = fixture.debugElement.query(By.css('app-search')).componentInstance;
+    const search = de.query(By.css('app-search')).componentInstance;
     const spy = spyOn(component, 'onSearch');
     search.onSearchChange();
     tick();
