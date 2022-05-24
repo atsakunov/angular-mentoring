@@ -2,10 +2,10 @@
   <app-courses-item
     *ngFor="let course of courses; trackBy: trackByFn"
     [course]="course"
-    (deleteHandler)="onDelete($event)"
-    (editHandler)="onEdit($event)"
+    (delete)="onDelete($event)"
+    (edit)="onEdit($event)"
   ></app-courses-item>
-  <button mat-flat-button color="basic" (click)="loadMore()">
+  <button class="load-more-button" mat-flat-button color="basic" (click)="loadMoreHandler()">
     Load more
   </button>
 </div>

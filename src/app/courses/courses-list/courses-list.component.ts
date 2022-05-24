@@ -11,24 +11,24 @@ import { ICourse } from 'src/app/core/interfaces/course.interface';
 export class CoursesListComponent {
   @Input() courses: ICourse[] = [];
 
-  @Output() deleteHandler = new EventEmitter<ICourse>();
+  @Output() delete = new EventEmitter<ICourse>();
 
-  @Output() editHandler = new EventEmitter<ICourse>();
+  @Output() edit = new EventEmitter<ICourse>();
 
-  @Output() loadMoreHandler = new EventEmitter<ICourse>();
+  @Output() loadMore = new EventEmitter<ICourse>();
 
   constructor() { }
 
   public onDelete(course: ICourse): void {
-    this.deleteHandler.emit(course);
+    this.delete.emit(course);
   }
 
   public onEdit(course: ICourse): void {
-    this.editHandler.emit(course);
+    this.edit.emit(course);
   }
 
-  public loadMore(): void {
-    this.loadMoreHandler.emit();
+  public loadMoreHandler(): void {
+    this.loadMore.emit();
   }
 
   public trackByFn(_: number, item: ICourse): number {
