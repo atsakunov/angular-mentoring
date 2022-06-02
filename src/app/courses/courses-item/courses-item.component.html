@@ -1,7 +1,10 @@
-<mat-card>
-  <mat-card-title>{{course.title}}</mat-card-title>
-  <mat-card-subtitle>{{course.creationDate | date: "mediumDate"}}</mat-card-subtitle>
-  <mat-card-subtitle>Duration: {{course.duration}}</mat-card-subtitle>
+<mat-card [ngClass]="{rated: course.topRated}">
+  <mat-card-title>
+    {{course.title | uppercase}}
+    <mat-icon *ngIf="course.topRated" color="accent">star</mat-icon>
+  </mat-card-title>
+  <mat-card-subtitle [appCreationDateHighlight]="course.creationDate">{{course.creationDate | date: "mediumDate"}}</mat-card-subtitle>
+  <mat-card-subtitle>Duration: {{course.duration | duration}}</mat-card-subtitle>
   <mat-card-content>
     <p class="course-description">
       {{course.description}}

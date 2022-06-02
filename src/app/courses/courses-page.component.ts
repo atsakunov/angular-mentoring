@@ -10,6 +10,8 @@ import { courses } from './courses.mock';
 export class CoursesPageComponent implements OnInit {
   public courses: ICourse[] = [];
 
+  public search = '';
+
   constructor() {}
 
   ngOnInit() {
@@ -17,7 +19,7 @@ export class CoursesPageComponent implements OnInit {
   }
 
   public onSearch(search: string): void {
-    console.log('Search', search);
+    this.search = search;
   }
 
   public onDelete(course: ICourse): void {
