@@ -9,14 +9,23 @@ import { CoursesPageComponent } from './courses-page.component';
 import { CoursesItemComponent } from './courses-item/courses-item.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { SearchComponent } from './search/search.component';
+import { CreationDateHighlightDirective } from './directives/creation-date-highlight/creation-date-highlight.directive';
+import { OrderByPipe } from './pipes/order-by/order-by.pipe';
+import { CoursesFilterPipe } from './pipes/courses-filter/courses-filter.pipe';
+import { DurationPipe } from './pipes/duration/duration.pipe';
 
 @NgModule({
   declarations: [
     CoursesPageComponent,
     SearchComponent,
     CoursesListComponent,
-    CoursesItemComponent
+    CoursesItemComponent,
+    CreationDateHighlightDirective,
+    OrderByPipe,
+    CoursesFilterPipe,
+    DurationPipe
   ],
+  providers: [CoursesFilterPipe, OrderByPipe],
   imports: [
     CommonModule,
     MatInputModule,
