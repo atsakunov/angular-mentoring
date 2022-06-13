@@ -1,10 +1,10 @@
 <div class="inner-container">
-  <app-search (searchChange)="onSearch($event)"></app-search>
+  <app-search (search)="onSearch($event)"></app-search>
   <app-courses-list
-    [courses]="courses" 
-    (deleteHandler)="onDelete($event)"
-    (editHandler)="onEdit($event)"
-    (loadMoreHandler)="loadMore()"
+    [courses]="courses"
+    (delete)="onDelete($event)"
+    (edit)="onEdit($event)"
+    (loadMore)="loadMore()"
   ></app-courses-list>
 </div>
 

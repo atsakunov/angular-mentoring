@@ -11,17 +11,17 @@ import { ICourse } from 'src/app/core/interfaces/course.interface';
 export class CoursesItemComponent {
   @Input() course: ICourse;
 
-  @Output() deleteHandler = new EventEmitter<ICourse>();
+  @Output() delete = new EventEmitter<ICourse>();
 
-  @Output() editHandler = new EventEmitter<ICourse>();
+  @Output() edit = new EventEmitter<ICourse>();
 
   constructor() { }
 
   onDelete(): void {
-    this.deleteHandler.emit(this.course);
+    this.delete.emit(this.course);
   }
 
   onEdit(): void {
-    this.editHandler.emit(this.course);
+    this.edit.emit(this.course);
   }
 }
