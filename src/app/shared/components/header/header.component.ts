@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { ICourse } from '../../../core/interfaces/course.interface';
+import { Component } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({

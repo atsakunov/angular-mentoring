@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {LocalStorageService} from "./local-storage.service";
-
+import { LocalStorageService } from './local-storage.service';
 
 const fakeUserInfo = {
   id: 1,
@@ -12,7 +11,6 @@ const fakeUserInfo = {
   providedIn: 'root',
 })
 export class AuthService {
-
   constructor(private storage: LocalStorageService) { }
 
   public login() {
