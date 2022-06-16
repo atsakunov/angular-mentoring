@@ -1,4 +1,4 @@
-import { ICourse } from '../core/interfaces/course.interface';
+import { ICourse } from '../../core/interfaces/course.interface';
 
 export const courses: ICourse[] = [
   {

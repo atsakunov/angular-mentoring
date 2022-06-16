@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { ICourse } from '../../../core/interfaces/course.interface';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor() {}
+  constructor(public authService: AuthService) {}
+
+  public get isAuthenticated() {
+    return this.authService.getIsAuthenticated();
+  }
+
+  public logoutHandler() {
+    this.authService.logout();
+  }
 }

@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ICourse } from '../core/interfaces/course.interface';
-import { courses } from './courses.mock';
+import { CoursesService } from './services/courses.service';
+import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
 
 @Component({
   selector: 'app-courses-page',
   templateUrl: './courses-page.component.html',
-  styleUrls: ['./courses-page.component.scss']
+  styleUrls: ['./courses-page.component.scss'],
+  providers: [CoursesService]
 })
 export class CoursesPageComponent implements OnInit {
   public courses: ICourse[] = [];
 
   public search = '';
 
-  constructor() {}
+  constructor(private coursesService: CoursesService, private dialog: MatDialog) {}
 
   ngOnInit() {
-    this.courses = courses;
+    this.courses = this.coursesService.getList();
   }
 
   public onSearch(search: string): void {
@@ -23,7 +26,17 @@ export class CoursesPageComponent implements OnInit {
   }
 
   public onDelete(course: ICourse): void {
-    console.log('Delete', course);
+    const dialogRef = this.dialog.open(DeleteConfirmComponent, {
+      data: {
+        course
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.courses = this.coursesService.removeItem(course.id);
+      }
+    });
   }
 
   public onEdit(course: ICourse): void {

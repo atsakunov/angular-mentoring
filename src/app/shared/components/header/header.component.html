@@ -1,7 +1,9 @@
 <div class="container">
   <div class="inner-container">
     <app-logo></app-logo>
-    <app-login></app-login>
+    <app-login
+      (logout)="logoutHandler()"
+      [isAuthenticated]="isAuthenticated"></app-login>
   </div>
 </div>
 
