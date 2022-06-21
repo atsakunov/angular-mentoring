@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="login-item">
-    <mat-icon aria-hidden="false" aria-label="Example home icon">perm_identity</mat-icon>
-    <span>User login</span>
-  </div>
-  <div class="login-item">
+  <div
+    class="login-item"
+    (click)="logoutHandler()"
+    *appIfAuthenticated="isAuthenticated"
+  >
     <mat-icon aria-hidden="false" aria-label="Example home icon">logout</mat-icon>
     <span>Log of</span>
-  </div>  
+  </div>
 </div>
 

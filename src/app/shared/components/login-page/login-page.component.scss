@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  color: #000;
+  .login-block {
+    width: 300px;
+    height: 300px;
+    margin: 100px auto;
+    padding: 12px;
+    .login-form {
+      min-width: 150px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .login-full-width {
+      margin-top: 20px;
+      width: 100%;
+    }
+    .title {
+      font-size: 20px;
+    }
+  }
+}
+
+

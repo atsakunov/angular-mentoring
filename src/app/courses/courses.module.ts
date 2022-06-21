@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CoursesPageComponent } from './courses-page.component';
 import { CoursesItemComponent } from './courses-item/courses-item.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
@@ -13,6 +14,8 @@ import { CreationDateHighlightDirective } from './directives/creation-date-highl
 import { OrderByPipe } from './pipes/order-by/order-by.pipe';
 import { CoursesFilterPipe } from './pipes/courses-filter/courses-filter.pipe';
 import { DurationPipe } from './pipes/duration/duration.pipe';
+import { CoursesService } from './services/courses.service';
+import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +26,10 @@ import { DurationPipe } from './pipes/duration/duration.pipe';
     CreationDateHighlightDirective,
     OrderByPipe,
     CoursesFilterPipe,
-    DurationPipe
+    DurationPipe,
+    DeleteConfirmComponent,
   ],
-  providers: [CoursesFilterPipe, OrderByPipe],
+  providers: [CoursesFilterPipe, OrderByPipe, CoursesService],
   imports: [
     CommonModule,
     MatInputModule,
@@ -33,7 +37,8 @@ import { DurationPipe } from './pipes/duration/duration.pipe';
     MatButtonModule,
     MatCardModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   exports: [CoursesPageComponent]
 })
