@@ -16,6 +16,7 @@ import { CoursesFilterPipe } from './pipes/courses-filter/courses-filter.pipe';
 import { DurationPipe } from './pipes/duration/duration.pipe';
 import { CoursesService } from './services/courses.service';
 import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
+import { AddCourseComponent } from './components/add-course/add-course.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DeleteConfirmComponent } from './components/delete-confirm/delete-confi
     CoursesFilterPipe,
     DurationPipe,
     DeleteConfirmComponent,
+    AddCourseComponent,
   ],
   providers: [CoursesFilterPipe, OrderByPipe, CoursesService],
   imports: [
