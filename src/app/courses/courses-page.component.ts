@@ -13,6 +13,8 @@ import { DeleteConfirmComponent } from './components/delete-confirm/delete-confi
 export class CoursesPageComponent implements OnInit {
   public courses: ICourse[] = [];
 
+  public isCourseAdding = false;
+
   public search = '';
 
   constructor(private coursesService: CoursesService, private dialog: MatDialog) {}
@@ -45,5 +47,19 @@ export class CoursesPageComponent implements OnInit {
 
   public loadMore(): void {
     console.log('Load more');
+  }
+
+  public addCourseHandler(): void {
+    this.isCourseAdding = true;
+  }
+
+  public saveCourseHandler(course: ICourse): void {
+    this.coursesService.createCourse(course);
+    this.courses = this.coursesService.getList();
+    this.isCourseAdding = false;
+  }
+
+  public closeAddCourseHandler(): void {
+    this.isCourseAdding = false;
   }
 }

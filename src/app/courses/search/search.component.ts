@@ -11,9 +11,16 @@ export class SearchComponent {
   @Output()
   public search: EventEmitter<string> = new EventEmitter<string>();
 
+  @Output()
+  public addCourse: EventEmitter<string> = new EventEmitter();
+
   constructor() { }
 
   public onSearchChange(): void {
     this.search.emit(this.searchValue);
+  }
+
+  public addCourseHandler(): void {
+    this.addCourse.emit();
   }
 }

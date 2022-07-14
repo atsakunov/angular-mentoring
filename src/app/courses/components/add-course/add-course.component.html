@@ -1,0 +1,46 @@
+<div class="constainer">
+  <mat-card>
+    <mat-card-title>
+      Add course
+    </mat-card-title>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Enter title" [(ngModel)]="title">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea
+        placeholder="Enter description"
+        matInput
+        [(ngModel)]="description"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Date</mat-label>
+      <input type="date" matInput placeholder="Enter date" [(ngModel)]="date">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Duration</mat-label>
+      <input
+        type="number"
+        matInput placeholder="Enter duration"
+        [(ngModel)]="duration"
+      >
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button
+        mat-button
+        (click)="closeHandler()"
+      >
+        Close
+      </button>
+      <button
+        mat-button
+        (click)="addCourseHandler()"
+      >
+        Add
+      </button>
+    </div>
+  </mat-card>
+</div>
+

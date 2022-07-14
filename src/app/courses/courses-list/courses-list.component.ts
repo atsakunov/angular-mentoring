@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component, EventEmitter, Input, OnChanges, Output
 } from '@angular/core';
 import { ICourse } from 'src/app/core/interfaces/course.interface';
@@ -8,7 +9,8 @@ import { OrderByPipe } from '../pipes/order-by/order-by.pipe';
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
-  styleUrls: ['./courses-list.component.scss']
+  styleUrls: ['./courses-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoursesListComponent implements OnChanges {
   @Input() courses: ICourse[] = [];
