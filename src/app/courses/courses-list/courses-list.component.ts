@@ -37,10 +37,6 @@ export class CoursesListComponent implements OnChanges {
     this.delete.emit(course);
   }
 
-  public onEdit(course: ICourse): void {
-    this.edit.emit(course);
-  }
-
   public loadMoreHandler(): void {
     this.loadMore.emit();
   }

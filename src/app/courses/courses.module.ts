@@ -17,6 +17,8 @@ import { DurationPipe } from './pipes/duration/duration.pipe';
 import { CoursesService } from './services/courses.service';
 import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
+import { CoursesRoutingModule } from './courses-page-routing.module';
+import { UpdateCourseComponent } from './components/update-course/update-course.component';
 
 @NgModule({
   declarations: [
@@ -30,10 +32,12 @@ import { AddCourseComponent } from './components/add-course/add-course.component
     DurationPipe,
     DeleteConfirmComponent,
     AddCourseComponent,
+    UpdateCourseComponent,
   ],
   providers: [CoursesFilterPipe, OrderByPipe, CoursesService],
   imports: [
     CommonModule,
+    CoursesRoutingModule,
     MatInputModule,
     MatIconModule,
     MatButtonModule,
@@ -41,7 +45,6 @@ import { AddCourseComponent } from './components/add-course/add-course.component
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule
-  ],
-  exports: [CoursesPageComponent]
+  ]
 })
 export class CoursesModule { }

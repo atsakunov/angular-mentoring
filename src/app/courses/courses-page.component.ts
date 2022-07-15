@@ -8,12 +8,9 @@ import { DeleteConfirmComponent } from './components/delete-confirm/delete-confi
   selector: 'app-courses-page',
   templateUrl: './courses-page.component.html',
   styleUrls: ['./courses-page.component.scss'],
-  providers: [CoursesService]
 })
 export class CoursesPageComponent implements OnInit {
   public courses: ICourse[] = [];
-
-  public isCourseAdding = false;
 
   public search = '';
 
@@ -41,25 +38,7 @@ export class CoursesPageComponent implements OnInit {
     });
   }
 
-  public onEdit(course: ICourse): void {
-    console.log('Edit', course);
-  }
-
   public loadMore(): void {
     console.log('Load more');
-  }
-
-  public addCourseHandler(): void {
-    this.isCourseAdding = true;
-  }
-
-  public saveCourseHandler(course: ICourse): void {
-    this.coursesService.createCourse(course);
-    this.courses = this.coursesService.getList();
-    this.isCourseAdding = false;
-  }
-
-  public closeAddCourseHandler(): void {
-    this.isCourseAdding = false;
   }
 }

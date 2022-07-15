@@ -1,8 +1,8 @@
 <div class="main-container">
   <app-header></app-header>
-  <app-breadcrumbs *appIfAuthenticated="isAuthenticated"></app-breadcrumbs>
-  <app-courses-page *appIfAuthenticated="isAuthenticated"></app-courses-page>
-  <app-login-page *appIfAuthenticated="!isAuthenticated"></app-login-page>
+  <app-breadcrumbs></app-breadcrumbs>
+  <router-outlet></router-outlet>
+<!--  <app-login-page *appIfAuthenticated="!isAuthenticated"></app-login-page>-->
 </div>
 <div class="footer">
   <app-footer></app-footer>

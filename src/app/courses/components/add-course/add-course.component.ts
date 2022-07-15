@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { ICourse } from '../../../core/interfaces/course.interface';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'app-add-course',
@@ -7,12 +8,6 @@ import { ICourse } from '../../../core/interfaces/course.interface';
   styleUrls: ['./add-course.component.scss']
 })
 export class AddCourseComponent {
-  @Output()
-  public closeAdd: EventEmitter<string> = new EventEmitter();
-
-  @Output()
-  public saveCourse: EventEmitter<ICourse> = new EventEmitter();
-
   public title = '';
 
   public description = '';
@@ -21,21 +16,22 @@ export class AddCourseComponent {
 
   public duration = 0;
 
-  constructor() { }
+  constructor(private coursesService: CoursesService, private router: Router) { }
 
-  public addCourseHandler() {
-    this.saveCourse.emit({
-      id: 100,
+  public addCourseHandler(): void {
+    const course = {
+      id: new Date().getTime(),
       title: this.title,
       creationDate: this.date,
       duration: this.duration,
       topRated: false,
       description: this.description
-    });
-    this.closeAdd.emit();
+    };
+    this.coursesService.createCourse(course);
+    this.router.navigate(['courses']);
   }
 
   public closeHandler() {
-    this.closeAdd.emit();
+    this.router.navigate(['courses']);
   }
 }
