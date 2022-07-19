@@ -16,7 +16,7 @@ export class CoursesItemComponent {
 
   @Output() delete = new EventEmitter<ICourse>();
 
-  constructor(private router: Router,) { }
+  constructor(private router: Router) { }
 
   onDelete(): void {
     this.delete.emit(this.course);
