@@ -15,7 +15,7 @@ import { OrderByPipe } from '../pipes/order-by/order-by.pipe';
 export class CoursesListComponent implements OnChanges {
   @Input() courses: ICourse[] = [];
 
-  @Input() search = '';
+  @Input() isCourseLoading = false;
 
   @Output() delete = new EventEmitter<ICourse>();
 
@@ -28,8 +28,7 @@ export class CoursesListComponent implements OnChanges {
   constructor(private filterPipe: CoursesFilterPipe, private orderByPipe: OrderByPipe) { }
 
   ngOnChanges() {
-    const filtered = this.filterPipe.transform(this.courses, this.search);
-    const ordered = this.orderByPipe.transform(filtered);
+    const ordered = this.orderByPipe.transform(this.courses);
     this.filteredCourses = ordered;
   }
 

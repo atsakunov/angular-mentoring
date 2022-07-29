@@ -12,16 +12,25 @@ import { DeleteConfirmComponent } from './components/delete-confirm/delete-confi
 export class CoursesPageComponent implements OnInit {
   public courses: ICourse[] = [];
 
-  public search = '';
+  public isCoursesLoading = false;
+
+  private search = '';
+
+  private start = 0;
+
+  private count = 5;
 
   constructor(private coursesService: CoursesService, private dialog: MatDialog) {}
 
   ngOnInit() {
-    this.courses = this.coursesService.getList();
+    this.getCourses();
   }
 
   public onSearch(search: string): void {
     this.search = search;
+    this.count = 5;
+    this.start = 0;
+    this.getCourses();
   }
 
   public onDelete(course: ICourse): void {
@@ -33,12 +42,24 @@ export class CoursesPageComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.courses = this.coursesService.removeItem(course.id);
+        this.coursesService.removeItem(course.id).subscribe(_ => {
+          this.loadMore();
+        });
       }
     });
   }
 
   public loadMore(): void {
-    console.log('Load more');
+    this.isCoursesLoading = false;
+    this.count += 5;
+    this.getCourses();
+  }
+
+  private getCourses() {
+    this.isCoursesLoading = true;
+    this.coursesService.getList(this.start, this.count, this.search).subscribe(res => {
+      this.courses = res;
+      this.isCoursesLoading = false;
+    });
   }
 }

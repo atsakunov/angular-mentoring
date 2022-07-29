@@ -1,31 +1,41 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from './local-storage.service';
-
-const fakeUserInfo = {
-  id: 1,
-  name: 'Aliaksandr',
-  token: 'token'
-};
+import { IUserData } from '../../shared/types/user.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private storage: LocalStorageService) { }
+  private token = '';
+
+  constructor(private storage: LocalStorageService, private http: HttpClient) { }
 
   public login() {
-    this.storage.setToStorage('coursesUserInfo', JSON.stringify(fakeUserInfo));
+    return this.http.post<{token: string}>('http://localhost:3004/auth/login', {
+      login: 'flastname', password: 'flastname'
+    });
+  }
+
+  public setToken(token: string) {
+    this.token = token;
   }
 
   public logout() {
-    this.storage.deleteFromStorage('coursesUserInfo');
+    this.token = '';
+  }
+
+  public getToken() {
+    return this.token;
   }
 
   public getIsAuthenticated(): boolean {
-    return Boolean(this.storage.getValue('coursesUserInfo'));
+    return Boolean(this.token);
   }
 
   public getUserInfo() {
-    return this.storage.getValue('coursesUserInfo');
+    return this.http.post<IUserData>('http://localhost:3004/auth/userinfo', {
+      token: this.token
+    });
   }
 }

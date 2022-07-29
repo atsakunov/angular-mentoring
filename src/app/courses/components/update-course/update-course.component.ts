@@ -31,9 +31,9 @@ export class UpdateCourseComponent implements OnInit {
 
     const course = this.coursesService.getItemById(this.id);
     if (course) {
-      this.title = course.title;
+      this.title = course.name;
       this.description = course.description;
-      this.date = course.creationDate;
+      this.date = course.date;
       this.duration = course.duration;
     }
   }

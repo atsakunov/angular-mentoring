@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CoursesPageComponent } from './courses-page.component';
 import { CoursesItemComponent } from './courses-item/courses-item.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
@@ -44,7 +45,8 @@ import { UpdateCourseComponent } from './components/update-course/update-course.
     MatCardModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ]
 })
 export class CoursesModule { }

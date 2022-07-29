@@ -5,10 +5,11 @@
       (delete)="onDelete($event)"
     ></app-courses-item>
   </div>
-  <div class="not-found" *ngIf="filteredCourses.length === 0">
+  <div class="not-found" *ngIf="filteredCourses.length === 0 && !isCourseLoading">
     No data fell free to add new course
   </div>
-  <button *ngIf="filteredCourses.length > 0" class="load-more-button" mat-flat-button color="basic" (click)="loadMoreHandler()">
+  <mat-spinner *ngIf="isCourseLoading"></mat-spinner>
+  <button *ngIf="!isCourseLoading" class="load-more-button" mat-flat-button color="basic" (click)="loadMoreHandler()">
     Load more
   </button>
 
