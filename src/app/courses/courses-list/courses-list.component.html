@@ -3,7 +3,6 @@
       *ngFor="let course of filteredCourses; trackBy: trackByFn"
       [course]="course"
       (delete)="onDelete($event)"
-      (edit)="onEdit($event)"
     ></app-courses-item>
   </div>
   <div class="not-found" *ngIf="filteredCourses.length === 0">

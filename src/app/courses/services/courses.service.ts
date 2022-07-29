@@ -7,11 +7,12 @@ export class CoursesService {
   private courses: ICourse[] = [];
 
   constructor() {
+    console.log('serv');
     this.courses = courses;
   }
 
   public getList(): ICourse[] {
-    return courses;
+    return this.courses;
   }
 
   public createCourse(course: ICourse) {

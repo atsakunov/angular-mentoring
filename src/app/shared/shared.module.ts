@@ -11,6 +11,7 @@ import { LoginComponent } from './components/header/login/login.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { IfAuthenticatedDirective } from './directives/if-authenticated.directiv
     LoginComponent,
     BreadcrumbsComponent,
     IfAuthenticatedDirective,
-    LoginPageComponent
+    LoginPageComponent,
+    PageNotFoundComponent
   ],
   exports: [
     HeaderComponent,

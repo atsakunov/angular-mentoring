@@ -3,6 +3,7 @@ import {
   Component, EventEmitter, Input, Output
 } from '@angular/core';
 import { ICourse } from 'src/app/core/interfaces/course.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses-item',
@@ -15,15 +16,13 @@ export class CoursesItemComponent {
 
   @Output() delete = new EventEmitter<ICourse>();
 
-  @Output() edit = new EventEmitter<ICourse>();
-
-  constructor() { }
+  constructor(private router: Router) { }
 
   onDelete(): void {
     this.delete.emit(this.course);
   }
 
   onEdit(): void {
-    this.edit.emit(this.course);
+    this.router.navigate(['courses', 'new', this.course.id]);
   }
 }

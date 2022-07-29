@@ -1,21 +1,12 @@
 <div class="inner-container">
   <app-search
     (search)="onSearch($event)"
-    (addCourse)="addCourseHandler()"
-    *ngIf="!isCourseAdding"
   ></app-search>
   <app-courses-list
     [courses]="courses"
     (delete)="onDelete($event)"
-    (edit)="onEdit($event)"
     (loadMore)="loadMore()"
     [search]="search"
-    *ngIf="!isCourseAdding"
   ></app-courses-list>
-  <app-add-course
-    (closeAdd)="closeAddCourseHandler()"
-    (saveCourse)="saveCourseHandler($event)"
-    *ngIf="isCourseAdding"
-  ></app-add-course>
 </div>
 
