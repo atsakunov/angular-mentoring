@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Store } from '@ngrx/store';
 import { IUserData } from '../../shared/types/user.interface';
+import {IAppStore} from "../store/state/state";
+import {getIsAuth, getToken} from "../store/selectors/auth";
+import {saveToken} from "../store/actions/auth.actions";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private token = '';
+  token = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private store: Store<IAppStore>) { }
 
   public login() {
     return this.http.post<{token: string}>('http://localhost:3004/auth/login', {
@@ -18,18 +23,20 @@ export class AuthService {
 
   public setToken(token: string) {
     this.token = token;
+    this.store.dispatch(saveToken({ token }));
   }
 
   public logout() {
     this.token = '';
+    this.store.dispatch(saveToken({ token: '' }));
   }
 
   public getToken() {
-    return this.token;
+    return this.store.select(getToken);
   }
 
-  public getIsAuthenticated(): boolean {
-    return Boolean(this.token);
+  public getIsAuthenticated(): Observable<boolean> {
+    return this.store.select(getIsAuth);
   }
 
   public getUserInfo() {

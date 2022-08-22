@@ -22,6 +22,9 @@ export class CoursesPageComponent implements OnInit {
 
   ngOnInit() {
     this.getCourses();
+    this.coursesService.getList().subscribe(res => {
+      this.courses = res;
+    });
   }
 
   public onSearch(search: string): void {
@@ -53,8 +56,6 @@ export class CoursesPageComponent implements OnInit {
   }
 
   private getCourses() {
-    this.coursesService.getList(this.start, this.count, this.search).subscribe(res => {
-      this.courses = res;
-    });
+    this.coursesService.requestList(this.start, this.count, this.search)
   }
 }
