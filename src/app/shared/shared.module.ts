@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/header/logo/logo.component';
@@ -12,6 +13,7 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { GlobalSpinnerComponent } from './components/global-spinner/global-spinner.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     BreadcrumbsComponent,
     IfAuthenticatedDirective,
     LoginPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    GlobalSpinnerComponent
   ],
   exports: [
     HeaderComponent,
@@ -31,13 +34,15 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatButtonModule,
     LoginPageComponent,
     IfAuthenticatedDirective,
+    GlobalSpinnerComponent
   ],
   imports: [
     CommonModule,
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }

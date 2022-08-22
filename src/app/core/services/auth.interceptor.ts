@@ -6,20 +6,24 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { AuthService } from './auth.service';
+import { IAppStore } from '../store/state/state';
+import { getToken } from '../store/selectors/auth';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+  token: Observable<string>;
+
   constructor(private authService: AuthService) {}
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token = this.authService.getToken();
-    if (token) {
+    this.authService.getToken().subscribe(res => {
       const authReq = req.clone({
-        headers: req.headers.set('access_token', token),
+        headers: req.headers.set('access_token', res),
       });
       return next.handle(authReq);
-    }
+    });
 
     return next.handle(req);
   }

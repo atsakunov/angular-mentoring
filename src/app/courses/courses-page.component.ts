@@ -12,8 +12,6 @@ import { DeleteConfirmComponent } from './components/delete-confirm/delete-confi
 export class CoursesPageComponent implements OnInit {
   public courses: ICourse[] = [];
 
-  public isCoursesLoading = false;
-
   private search = '';
 
   private start = 0;
@@ -24,6 +22,9 @@ export class CoursesPageComponent implements OnInit {
 
   ngOnInit() {
     this.getCourses();
+    this.coursesService.getList().subscribe(res => {
+      this.courses = res;
+    });
   }
 
   public onSearch(search: string): void {
@@ -50,16 +51,11 @@ export class CoursesPageComponent implements OnInit {
   }
 
   public loadMore(): void {
-    this.isCoursesLoading = false;
     this.count += 5;
     this.getCourses();
   }
 
   private getCourses() {
-    this.isCoursesLoading = true;
-    this.coursesService.getList(this.start, this.count, this.search).subscribe(res => {
-      this.courses = res;
-      this.isCoursesLoading = false;
-    });
+    this.coursesService.requestList(this.start, this.count, this.search)
   }
 }
