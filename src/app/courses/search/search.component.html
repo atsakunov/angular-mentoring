@@ -7,6 +7,7 @@
           matInput
           placeholder="Search"
           name= "search"
+          (keyup)="onKeyUp($event)"
           [(ngModel)]="searchValue"
         />
       </mat-form-field>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
+import { LoadingService } from './core/services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,7 @@ import { AuthService } from './core/services/auth.service';
 export class AppComponent {
   public title = 'angular-mentoring';
 
-  constructor(public authService: AuthService) {}
+  public loadingObs = this.loader.getLoadingObs();
+
+  constructor(public authService: AuthService, private loader: LoadingService) {}
 }

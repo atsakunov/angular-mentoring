@@ -12,6 +12,8 @@ export class LoginComponent {
 
   @Input() isAuthenticated = false;
 
+  @Input() name = '';
+
   constructor() { }
 
   public logoutHandler() {
