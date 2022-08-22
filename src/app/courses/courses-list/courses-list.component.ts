@@ -15,8 +15,6 @@ import { OrderByPipe } from '../pipes/order-by/order-by.pipe';
 export class CoursesListComponent implements OnChanges {
   @Input() courses: ICourse[] = [];
 
-  @Input() isCourseLoading = false;
-
   @Output() delete = new EventEmitter<ICourse>();
 
   @Output() edit = new EventEmitter<ICourse>();
@@ -35,6 +33,7 @@ export class CoursesListComponent implements OnChanges {
   public onDelete(course: ICourse): void {
     this.delete.emit(course);
   }
+
 
   public loadMoreHandler(): void {
     this.loadMore.emit();
