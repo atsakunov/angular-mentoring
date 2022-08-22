@@ -11,8 +11,8 @@ describe('CoursesItemComponent', () => {
   let editButton: DebugElement;
   const mockCourse = {
     id: 1,
-    title: 'Course 1',
-    creationDate: '2020-01-01',
+    name: 'Course 1',
+    date: '2020-01-01',
     duration: 20,
     description: 'description'
   };

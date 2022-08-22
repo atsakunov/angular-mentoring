@@ -12,10 +12,10 @@ export class OrderByPipe implements PipeTransform {
   transform(value: ICourse[]): ICourse[] {
     const newValue = [...value];
     newValue.sort((value1, value2) => {
-      if (!this.dateService.isDayBefore(value1.creationDate, value2.creationDate)) {
+      if (!this.dateService.isDayBefore(value1.date, value2.date)) {
         return -1;
       }
-      if (this.dateService.isDayBefore(value1.creationDate, value2.creationDate)) {
+      if (this.dateService.isDayBefore(value1.date, value2.date)) {
         return 1;
       }
 

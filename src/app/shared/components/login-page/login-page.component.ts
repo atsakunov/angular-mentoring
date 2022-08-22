@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-page',
@@ -15,7 +15,9 @@ export class LoginPageComponent {
   constructor(public authService: AuthService, private router: Router) {}
 
   public loginHandler() {
-    this.authService.login();
-    this.router.navigate(['courses']);
+    this.authService.login().subscribe(res => {
+      this.router.navigate(['courses']);
+      this.authService.setToken(res.token);
+    });
   }
 }

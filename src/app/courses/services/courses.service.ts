@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
-import { courses } from './courses.mock';
+import { HttpClient } from '@angular/common/http';
 import { ICourse } from '../../core/interfaces/course.interface';
 
 @Injectable()
 export class CoursesService {
   private courses: ICourse[] = [];
 
-  constructor() {
-    console.log('serv');
-    this.courses = courses;
-  }
+  constructor(private http: HttpClient) {}
 
-  public getList(): ICourse[] {
-    return this.courses;
+  public getList(start = 0, count = 5, search = '') {
+    return this.http.get<ICourse[]>(
+      `http://localhost:3004/courses?start=${start}&count=${count}&textFragment=${search}`
+    );
   }
 
   public createCourse(course: ICourse) {
-    this.courses = [...this.courses, course];
-    return this.courses;
+    return this.http.post<ICourse[]>(
+      'http://localhost:3004/courses', course
+    );
   }
 
   public getItemById(id: number) {
@@ -32,7 +32,6 @@ export class CoursesService {
   }
 
   public removeItem(id: number) {
-    this.courses = this.courses.filter(item => item.id !== id);
-    return this.courses;
+    return this.http.delete(`http://localhost:3004/courses/${id}`);
   }
 }

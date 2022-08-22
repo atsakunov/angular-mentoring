@@ -10,8 +10,4 @@ export class AppComponent {
   public title = 'angular-mentoring';
 
   constructor(public authService: AuthService) {}
-
-  public get isAuthenticated() {
-    return this.authService.getIsAuthenticated();
-  }
 }

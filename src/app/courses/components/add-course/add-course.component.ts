@@ -21,14 +21,15 @@ export class AddCourseComponent {
   public addCourseHandler(): void {
     const course = {
       id: new Date().getTime(),
-      title: this.title,
-      creationDate: this.date,
+      name: this.title,
+      date: this.date,
       duration: this.duration,
       topRated: false,
       description: this.description
     };
-    this.coursesService.createCourse(course);
-    this.router.navigate(['courses']);
+    this.coursesService.createCourse(course).subscribe(_ => {
+      this.router.navigate(['courses']);
+    });
   }
 
   public closeHandler() {
