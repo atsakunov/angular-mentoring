@@ -42,7 +42,7 @@ export class CoursesPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result && course.id) {
         this.coursesService.removeItem(course.id).subscribe(_ => {
           this.loadMore();
         });
@@ -56,6 +56,6 @@ export class CoursesPageComponent implements OnInit {
   }
 
   private getCourses() {
-    this.coursesService.requestList(this.start, this.count, this.search)
+    this.coursesService.requestList(this.start, this.count, this.search);
   }
 }

@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { ICourse } from '../../core/interfaces/course.interface';
-import {saveToken} from "../../core/store/actions/auth.actions";
-import {Store} from "@ngrx/store";
-import {IAppStore} from "../../core/store/state/state";
-import {saveCourses} from "../../core/store/actions/courses,actions";
-import {getCoursesList} from "../../core/store/selectors/courses.selector";
-import {Observable} from "rxjs";
+import { IAppStore } from '../../core/store/state/state';
+import { saveCourses } from '../../core/store/actions/courses,actions';
+import { getCoursesList } from '../../core/store/selectors/courses.selector';
 
 @Injectable()
 export class CoursesService {
@@ -30,8 +29,16 @@ export class CoursesService {
     );
   }
 
+  public updateCourse(course: ICourse, id: number) {
+    return this.http.patch<ICourse[]>(
+      `http://localhost:3004/courses/${id}`, course
+    );
+  }
+
   public getItemById(id: number) {
-    return this.courses.find(item => item.id === id);
+    return this.http.get<ICourse>(
+      `http://localhost:3004/courses/${id}`
+    );
   }
 
   public updateItem(id: number, course: ICourse) {

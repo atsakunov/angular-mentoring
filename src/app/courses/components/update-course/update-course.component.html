@@ -3,44 +3,75 @@
     <mat-card-title>
       Update course
     </mat-card-title>
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Title</mat-label>
-      <input matInput placeholder="Enter title" [(ngModel)]="title">
-    </mat-form-field>
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Description</mat-label>
-      <textarea
-        placeholder="Enter description"
-        matInput
-        [(ngModel)]="description"
-      ></textarea>
-    </mat-form-field>
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Date</mat-label>
-      <input type="date" matInput placeholder="Enter date" [(ngModel)]="date">
-    </mat-form-field>
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Duration</mat-label>
-      <input
-        type="number"
-        matInput placeholder="Enter duration"
-        [(ngModel)]="duration"
-      >
-    </mat-form-field>
-    <div mat-dialog-actions>
-      <button
-        mat-button
-        (click)="closeHandler()"
-      >
-        Close
-      </button>
-      <button
-        mat-button
-        (click)="addCourseHandler()"
-      >
-        Update
-      </button>
-    </div>
+    <form [formGroup]="updateGroupForm" (ngSubmit)="addCourseHandler()">
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Enter title" formControlName="name">
+        <small
+          class="text-danger"
+          *ngIf="updateGroupForm.get('name')?.hasError('required') && updateGroupForm.get('name')?.touched">
+          The field is required
+        </small>
+        <small class="text-danger"
+               *ngIf="updateGroupForm.get('name')?.hasError('maxlength')">
+          The maximum length for this field is {{updateGroupForm?.get('name')?.errors?.maxlength?.requiredLength}} characters.
+        </small>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea
+          placeholder="Enter description"
+          matInput
+          formControlName="description"
+        ></textarea>
+        <small
+          class="text-danger"
+          *ngIf="updateGroupForm.get('description')?.hasError('required') && updateGroupForm.get('description')?.touched">
+          The field is required
+        </small>
+        <small class="text-danger"
+               *ngIf="updateGroupForm.get('description')?.hasError('maxlength')">
+          The maximum length for this field is {{updateGroupForm?.get('description')?.errors?.maxlength?.requiredLength}} characters.
+        </small>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Date</mat-label>
+        <input type="date" matInput placeholder="Enter date" formControlName="date">
+        <small
+          class="text-danger"
+          *ngIf="updateGroupForm.get('date')?.hasError('required') && updateGroupForm.get('date')?.touched">
+          The field is required
+        </small>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Duration</mat-label>
+        <input
+          type="number"
+          matInput placeholder="Enter duration"
+          formControlName="duration"
+        >
+        <small
+          class="text-danger"
+          *ngIf="updateGroupForm.get('duration')?.hasError('required') && updateGroupForm.get('duration')?.touched">
+          The field is required
+        </small>
+      </mat-form-field>
+      <div mat-dialog-actions>
+        <button
+          mat-button
+          (click)="closeHandler()"
+        >
+          Close
+        </button>
+        <button
+          mat-button
+          type="submit"
+          [disabled]="!updateGroupForm.valid"
+        >
+          Update
+        </button>
+      </div>
+    </form>
   </mat-card>
 </div>
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 import { CoursesService } from '../../services/courses.service';
 
 @Component({
@@ -8,28 +9,32 @@ import { CoursesService } from '../../services/courses.service';
   styleUrls: ['./add-course.component.scss']
 })
 export class AddCourseComponent {
-  public title = '';
+  addGroupForm = this.fb.group({
+    name: ['', [Validators.required, Validators.maxLength(50)]],
+    description: ['', [Validators.required, Validators.maxLength(500)]],
+    date: ['', Validators.required],
+    duration: [0, Validators.required]
+  });
 
-  public description = '';
-
-  public date = '';
-
-  public duration = 0;
-
-  constructor(private coursesService: CoursesService, private router: Router) { }
+  constructor(private coursesService: CoursesService, private router: Router, private fb: FormBuilder) { }
 
   public addCourseHandler(): void {
     const course = {
       id: new Date().getTime(),
-      name: this.title,
-      date: this.date,
-      duration: this.duration,
+      name: this.addGroupForm.value.name,
+      date: this.addGroupForm.value.date,
+      duration: this.addGroupForm.value.duration,
       topRated: false,
-      description: this.description
+      description: this.addGroupForm.value.description,
     };
+
     this.coursesService.createCourse(course).subscribe(_ => {
       this.router.navigate(['courses']);
     });
+  }
+
+  nhDoCheck() {
+    console.log(this.addGroupForm);
   }
 
   public closeHandler() {

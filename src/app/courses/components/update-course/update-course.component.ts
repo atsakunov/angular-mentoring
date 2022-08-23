@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 import { CoursesService } from '../../services/courses.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { CoursesService } from '../../services/courses.service';
 export class UpdateCourseComponent implements OnInit {
   public id: number;
 
-  public title = '';
+  public name = '';
 
   public description = '';
 
@@ -18,10 +19,18 @@ export class UpdateCourseComponent implements OnInit {
 
   public duration = 0;
 
+  updateGroupForm = this.fb.group({
+    name: ['', [Validators.required, Validators.maxLength(50)]],
+    description: ['', [Validators.required, Validators.maxLength(500)]],
+    date: ['', Validators.required],
+    duration: [0, Validators.required]
+  });
+
   constructor(
     private coursesService: CoursesService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
@@ -29,26 +38,28 @@ export class UpdateCourseComponent implements OnInit {
       this.id = +params['id'];
     });
 
-    const course = this.coursesService.getItemById(this.id);
-    if (course) {
-      this.title = course.name;
-      this.description = course.description;
-      this.date = course.date;
-      this.duration = course.duration;
-    }
+    this.coursesService.getItemById(this.id).subscribe(item => {
+      this.updateGroupForm.patchValue({
+        name: item.name,
+        description: item.description,
+        date: item.date,
+        duration: item.duration,
+      });
+    });
   }
 
   public addCourseHandler(): void {
-    // const course = {
-    //   id: 100,
-    //   title: this.title,
-    //   creationDate: this.date,
-    //   duration: this.duration,
-    //   topRated: false,
-    //   description: this.description
-    // };
-    // this.coursesService.createCourse(course);
-    // this.router.navigate(['courses']);
+    const course = {
+      name: this.updateGroupForm.value.name,
+      date: this.updateGroupForm.value.date,
+      duration: this.updateGroupForm.value.duration,
+      topRated: false,
+      description: this.updateGroupForm.value.description,
+    };
+
+    this.coursesService.updateCourse(course, this.id).subscribe(_ => {
+      this.router.navigate(['courses']);
+    });
   }
 
   public closeHandler() {

@@ -3,17 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoursesModule } from './courses/courses.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthInterceptor } from './core/services/auth.interceptor';
 import { LoadingInterceptor } from './core/services/loading.interceptor';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import {authReducer} from "./core/store/reducers/auth.reducer";
-import {coursesReducer} from "./core/store/reducers/courses.reducer";
+import { authReducer } from './core/store/reducers/auth.reducer';
+import { coursesReducer } from './core/store/reducers/courses.reducer';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {coursesReducer} from "./core/store/reducers/courses.reducer";
     HttpClientModule,
     StoreModule.forRoot({}, {}),
     StoreModule.forRoot({ auth: authReducer, courses: coursesReducer }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    ReactiveFormsModule
   ],
   providers: [
     {

@@ -1,6 +1,9 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
-import {ICourse} from "../../core/interfaces/course.interface";
-import {debounceTime, distinctUntilChanged, Subject, Subscription} from "rxjs";
+import {
+  Component, EventEmitter, OnDestroy, OnInit, Output
+} from '@angular/core';
+import {
+  debounceTime, distinctUntilChanged, Subject, Subscription
+} from 'rxjs';
 
 @Component({
   selector: 'app-search',
