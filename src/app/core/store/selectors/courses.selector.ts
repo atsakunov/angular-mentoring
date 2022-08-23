@@ -1,6 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import {IAppStore, IAuthStore, ICoursesStore} from '../state/state';
-import {ICourse} from "../../interfaces/course.interface";
+import { IAppStore, ICoursesStore } from '../state/state';
 
 export interface FeatureState {
   counter: number;

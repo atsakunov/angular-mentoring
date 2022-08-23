@@ -1,4 +1,4 @@
-import {ICourse} from "../../interfaces/course.interface";
+import { ICourse } from '../../interfaces/course.interface';
 
 export interface IAuthStore {
   token: string;

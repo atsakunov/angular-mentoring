@@ -1,5 +1,5 @@
 export interface ICourse {
-  id: number;
+  id?: number;
   name: string;
   date: string;
   duration: number;

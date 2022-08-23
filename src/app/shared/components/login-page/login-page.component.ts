@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
@@ -8,11 +9,12 @@ import { AuthService } from '../../../core/services/auth.service';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-  public login = '';
+  loginForm = this.fb.group({
+    login: ['', Validators.required],
+    password: ['', Validators.required],
+  });
 
-  public password = '';
-
-  constructor(public authService: AuthService, private router: Router) {}
+  constructor(public authService: AuthService, private router: Router, private fb: FormBuilder) {}
 
   public loginHandler() {
     this.authService.login().subscribe(res => {

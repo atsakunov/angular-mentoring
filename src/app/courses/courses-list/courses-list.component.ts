@@ -34,12 +34,11 @@ export class CoursesListComponent implements OnChanges {
     this.delete.emit(course);
   }
 
-
   public loadMoreHandler(): void {
     this.loadMore.emit();
   }
 
-  public trackByFn(_: number, item: ICourse): number {
-    return item.id;
+  public trackByFn(_: number, item: ICourse): number | string {
+    return item.id || item.name;
   }
 }

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { IUserData } from '../../shared/types/user.interface';
-import {IAppStore} from "../store/state/state";
-import {getIsAuth, getToken} from "../store/selectors/auth";
-import {saveToken} from "../store/actions/auth.actions";
-import {Observable} from "rxjs";
+import { IAppStore } from '../store/state/state';
+import { getIsAuth, getToken } from '../store/selectors/auth';
+import { saveToken } from '../store/actions/auth.actions';
 
 @Injectable({
   providedIn: 'root',

@@ -1,25 +1,38 @@
 <div class="container">
   <div class="login-block">
     <div class="title">Login</div>
-    <mat-form-field class="login-full-width" appearance="fill">
-      <mat-label>Email</mat-label>
-      <input type="email" matInput
-             autocomplete="off"
-             placeholder="Ex. pat@example.com"
-             [(ngModel)]="login"
+    <form [formGroup]="loginForm" (ngSubmit)="loginHandler()">
+      <mat-form-field class="login-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput
+               autocomplete="off"
+               placeholder="Ex. pat@example.com"
+               formControlName="login"
+        >
+        <small
+          class="text-danger"
+          *ngIf="loginForm.get('login')?.hasError('required') && loginForm.get('login')?.touched">
+          The field is required
+        </small>
+      </mat-form-field>
+      <mat-form-field class="login-full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput autocomplete="off"
+               placeholder="password" formControlName="password">
+        <small
+          class="text-danger"
+          *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+          The field is required
+        </small>
+      </mat-form-field>
+      <button
+        class="login-button"
+        mat-raised-button color="primary"
+        type="submit"
+        [disabled]="!loginForm.valid"
       >
-    </mat-form-field>
-    <mat-form-field class="login-full-width" appearance="fill">
-      <mat-label>Password</mat-label>
-      <input type="password" matInput autocomplete="off"
-             placeholder="password" [(ngModel)]="password">
-    </mat-form-field>
-    <button
-      class="login-button"
-      mat-raised-button color="primary"
-      (click)="loginHandler()"
-    >
-      Login
-    </button>
+        Login
+      </button>
+    </form>
   </div>
 </div>
