@@ -20,7 +20,7 @@ import {coursesReducer} from "./core/store/reducers/courses.reducer";
     AppComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     CoursesModule,
     SharedModule,
